@@ -1,0 +1,38 @@
+func createEvent(context *gin.Context){
+	var event models.Event
+	context.ShouldBindJSON(&event)
+}	
+
+/*
+Line 1: func createEvent(context *gin.Context) 
+func: This keyword is used in Go to define a function.
+createEvent: This is the name of the function. In Go, function names begin with a capital letter if you want them to be accessible outside the package, which is the case here.
+(context *gin.Context): This is the parameter passed to the function.
+context: This is the name of the parameter.
+*gin.Context: *gin.Context is the type of the parameter. It is a pointer to a gin.Context object. gin.Context is a structure provided by the Gin framework that holds the HTTP request and response data, along with other information about the current HTTP request being processed. It's typically used in route handler functions for web applications.
+The * before gin.Context means that context is a pointer to an instance of gin.Context. Using pointers helps to avoid copying large data structures and allows functions to modify data directly.
+In summary: This is a function definition named createEvent, and it takes a pointer to a gin.Context object as an argument.
+
+Line 2: var event models.Event
+var: This keyword is used to declare a new variable in Go.
+event: This is the name of the variable being declared.
+models.Event: This is the type of the event variable. models is probably a package in your project where Event is a structure (or struct) that represents some kind of event in your application.
+In Go, struct is a way to group related data together. For example, Event could contain fields like ID, Name, Date, etc., to describe an event.
+In summary: You are declaring a new variable named event, and its type is models.Event, which is a struct defined in the models package.
+
+Line 3: context.ShouldBindJSON(&event)
+context: This refers to the gin.Context object passed as an argument to the function.
+ShouldBindJSON: This is a method provided by the Gin framework. It is used to bind or map incoming JSON data from the HTTP request body to a Go struct (in this case, the event struct).
+This method reads the JSON data from the request body, and it tries to map the keys in the JSON object to the fields of the event struct.
+If successful, the event struct will be populated with the data from the JSON request. If there's an error, it will return a binding error, but in your example, no error handling is done (which might be added in a real-world scenario).
+&event: This is the address of the event variable (i.e., a pointer to event). You need to pass a pointer to ShouldBindJSON so it can modify the event variable directly with the values from the JSON data.
+In summary: This line binds the incoming JSON data in the HTTP request to the event variable, which is of type models.Event. After this line, the event variable will contain the data parsed from the JSON request.
+
+Final Summary:
+This createEvent function is part of a web handler in a Gin-based Go web application. It does the following:
+
+It accepts an HTTP request, represented by the context parameter, which contains information like the request body.
+It creates a new variable event of type models.Event.
+It uses context.ShouldBindJSON(&event) to read the JSON data from the HTTP request body and populate the event struct with that data.
+In simple terms: This function is meant to read JSON data from an HTTP request, convert it into a Go struct (event), and store the result in the event variable. The function doesn't return anything or handle errors in the current form, so you may want to add error handling and further logic depending on your application's needs.
+*/
