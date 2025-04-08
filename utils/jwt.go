@@ -51,5 +51,4 @@ func VerifyToken(token string) (int64, error) {
 	userId := int64(claims["userId"].(float64))
 
 	return userId, nil
-
 }

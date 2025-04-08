@@ -14,7 +14,7 @@ func signup(context *gin.Context) {
 	err := context.ShouldBindJSON(&user)
 
 	if err != nil {
-		context.JSON(http.StatusBadRequest, gin.H{"message": "Could not "})
+		context.JSON(http.StatusBadRequest, gin.H{"message": "Could not parse request data "})
 		return
 	}
 
